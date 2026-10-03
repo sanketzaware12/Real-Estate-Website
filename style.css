@@ -490,3 +490,27 @@ body.no-scroll{overflow:hidden}
 
 /* Keep the View text in the first two gallery cards on a normal cursor. */
 #galleryGrid.g-plans .g-item:nth-child(-n+2) .g-body i{cursor:default}
+
+/* ===== Responsive safety fixes ===== */
+@media(max-width:639px){
+  .wrap{padding-left:16px;padding-right:16px}
+  .hero h1{font-size:clamp(2rem,10vw,2.8rem);overflow-wrap:anywhere}
+  .hero-sub{font-size:1rem}
+  .g-head{padding:0 4px}
+  .g-sub{font-size:.92rem}
+  #galleryGrid.g-plans{gap:10px}
+  #galleryGrid.g-plans .g-body{padding:12px 12px 14px}
+  #galleryGrid.g-plans .g-item:nth-child(-n+2) .g-body{padding-right:68px}
+  #galleryGrid.g-plans .g-item:nth-child(-n+2) .g-body i{right:12px;font-size:.72rem}
+  .contact-list{overflow-wrap:anywhere}
+  .modal-box{max-height:88vh}
+  .l-meta{flex-wrap:wrap;justify-content:center;text-align:center}
+  #lImg{max-width:88vw}
+  .float-btns{right:12px;bottom:12px}
+}
+@media(max-width:380px){
+  .brand{font-size:1.4rem}
+  .hero-content{padding-top:82px;padding-bottom:52px}
+  .g-body b{font-size:.94rem}
+  #galleryGrid.g-plans .g-item:nth-child(-n+2) .g-body b{font-size:.98rem}
+}
