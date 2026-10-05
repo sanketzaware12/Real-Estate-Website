@@ -514,3 +514,17 @@ body.no-scroll{overflow:hidden}
   .g-body b{font-size:.94rem}
   #galleryGrid.g-plans .g-item:nth-child(-n+2) .g-body b{font-size:.98rem}
 }
+
+
+/* Project Highlights & Lifestyle Amenities service-card lists */
+.svc .svc-list{display:flex;flex-direction:column;gap:5px;line-height:1.35;font-size:.88rem}
+.svc .svc-list span{display:block}
+@media(max-width:639px){.svc .svc-list{font-size:.86rem;gap:4px}}
+
+/* ===== Services: two partitioned groups with a divider line ===== */
+.svc-grid{max-width:960px;margin-left:auto;margin-right:auto}
+.svc-divider{display:flex;align-items:center;gap:16px;max-width:760px;margin:56px auto 48px}
+.svc-divider span{flex:1;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--gold))}
+.svc-divider span:last-child{background:linear-gradient(270deg,transparent,var(--gold))}
+.svc-divider i{width:12px;height:12px;background:var(--gold);transform:rotate(45deg);box-shadow:0 0 0 5px rgba(201,164,92,.22)}
+@media(max-width:639px){.svc-divider{margin:40px auto 34px}}
