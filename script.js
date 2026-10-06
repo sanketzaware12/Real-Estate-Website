@@ -305,10 +305,10 @@ const P = "assets/gallery/";
 const galleryData = {
   /* Order of cards = order of this list. To add/replace a photo, put it in assets/gallery/ and edit a row. */
   plans: [
-    { src: P + "01-2bhk-type-1.jpg", card: P + "01-2bhk-type-1-card.jpg", thumb: P + "01-2bhk-type-1-thumb.jpg", title: "2 BHK · Type 1", sub: "Saleable area 1050 sq.ft", tag: "2 BHK", kind: "plan" },
-    { src: P + "02-2bhk-type-2.jpg", card: P + "02-2bhk-type-2-card.jpg", thumb: P + "02-2bhk-type-2-thumb.jpg", title: "2 BHK · Type 2", sub: "Saleable area 1015 sq.ft", tag: "2 BHK", kind: "plan" },
-    { src: P + "03-2bhk-type-3.jpg", card: P + "03-2bhk-type-3-card.jpg", thumb: P + "03-2bhk-type-3-thumb.jpg", title: "2 BHK · Type 3", sub: "Saleable area 945 sq.ft", tag: "2 BHK", kind: "plan" },
-    { src: P + "04-3bhk-type-1.jpg", card: P + "04-3bhk-type-1-card.jpg", thumb: P + "04-3bhk-type-1-thumb.jpg", title: "3 BHK · Type 1", sub: "Saleable area 1449 sq.ft", tag: "3 BHK", kind: "plan" },
+    { src: P + "01-2bhk-type-1.jpg", card: P + "01-2bhk-type-1-card.jpg", thumb: P + "01-2bhk-type-1-thumb.jpg", title: "2 BHK ", sub: "Saleable area 1050 sq.ft", tag: "2 BHK", kind: "plan" },
+    { src: P + "02-2bhk-type-2.jpg", card: P + "02-2bhk-type-2-card.jpg", thumb: P + "02-2bhk-type-2-thumb.jpg", title: "2 BHK ", sub: "Saleable area 1015 sq.ft", tag: "2 BHK", kind: "plan" },
+    { src: P + "03-2bhk-type-3.jpg", card: P + "03-2bhk-type-3-card.jpg", thumb: P + "03-2bhk-type-3-thumb.jpg", title: "2 BHK ", sub: "Saleable area 945 sq.ft", tag: "2 BHK", kind: "plan" },
+    { src: P + "04-3bhk-type-1.jpg", card: P + "04-3bhk-type-1-card.jpg", thumb: P + "04-3bhk-type-1-thumb.jpg", title: "3 BHK ", sub: "Saleable area 1449 sq.ft", tag: "3 BHK", kind: "plan" },
     { src: P + "05-building-side-view.jpg", card: P + "05-building-side-view-card.jpg", thumb: P + "05-building-side-view-thumb.jpg", title: "Building Side View", sub: "Brick and white façade with entrance gate", tag: "Elevation", kind: "photo" },
     { src: P + "06-fountain.jpg", card: P + "06-fountain-card.jpg", thumb: P + "06-fountain-thumb.jpg", title: "Fountain", sub: "Water feature with landscaped lawn", tag: "Amenity", kind: "photo" },
     { src: P + "07-play-area.jpg", card: P + "07-play-area-card.jpg", thumb: P + "07-play-area-thumb.jpg", title: "Play Area", sub: "Colourful play zone for children", tag: "Amenity", kind: "photo" },

@@ -618,3 +618,12 @@ body.no-scroll{overflow:hidden}
   .contact-info .map-card,.contact-info .map-card .map{min-height:260px}
   #enquiryForm{padding:18px}
 }
+
+/* ===== Clickable address, map and developer credit ===== */
+.contact-list .addr-link{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(201,164,92,.6)}
+.contact-list .addr-link:hover{color:var(--gold)}
+.contact-info .map-card{position:relative}
+.map-card .map-click{position:absolute;inset:0;z-index:2;display:block;cursor:pointer;background:transparent}
+.copy .dev-link{color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.copy .dev-link:hover{color:var(--gold)}
+@media(max-width:767px){.copy{padding:20px 84px 24px 20px}}
