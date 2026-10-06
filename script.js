@@ -1,9 +1,9 @@
 /* =========================================================
    1. CONFIGURATION  (replace these values)
    ========================================================= */
-const whatsappNumber = "919699938110"; // digits only, with country code e.g. 919876543210
-const phoneNumber = "+919699938110";
-const brandName = "EstateVista";
+const whatsappNumber = "918669119482"; // digits only, with country code e.g. 919876543210
+const phoneNumber = "+918669119482";
+const brandName = "PC Reality";
 
 /* =========================================================
    2. PROPERTY DATA  (DEMO DATA - replace with real listings)
@@ -60,7 +60,7 @@ const icon = (n, c = "") => `<svg class="i ${c}" viewBox="0 0 24 24" fill="none"
 /* Static content blocks (edit freely) */
 const content = {
   categories:[["home","Buy a Home","Find homes that match your budget and lifestyle.","Buy"],["tag","Sell a Property","Get guidance on pricing, buyers and paperwork.","Sell"],["key","Rent a Property","Quality rentals with simple, clear terms.","Rent"],["trending","Investment Property","Explore options with long-term potential.","Buy"]],
-  services:[["tag","Property Selling","Listing guidance and buyer coordination."],["message","Property Consultation","Honest advice before you decide."],["building","Project Highlights",`<span class="svc-list"><span>• 38 Guntha Land Parcel</span><span>• 14-Storey Residential Tower</span><span>• 3 Levels of Parking Space</span><span>• 11 Apartments on Each Floor</span><span>• 4 High-Speed Elevators</span><span>• 2 Staircases</span><span>• Three-Side Open Views</span><span>• Podium &amp; Rooftop Amenities</span><span>• Possession Within 2 Years</span></span>`],["heart","Lifestyle Amenities",`<span class="svc-list"><span>• Solar PV Panels for Renewable Energy Generation</span><span>• Co-working Space</span><span>• Indoor &amp; Open Gym</span><span>• Yoga &amp; Meditation Zone</span><span>• Jogging Track</span><span>• Society Office</span><span>• Children's Play Area</span><span>• Grand Clubhouse</span><span>• Box Cricket</span></span>`]],
+  services:[["home","Property Buying","Shortlisting, site visits and negotiation support."],["tag","Property Selling","Listing guidance and buyer coordination."],["key","Property Renting","Rental search for tenants and owners."],["message","Property Consultation","Honest advice before you decide."],["building","Project Highlights",`<span class="svc-list"><span>• 38 Guntha Land Parcel</span><span>• 14-Storey Residential Tower</span><span>• 3 Levels of Parking Space</span><span>• 11 Apartments on Each Floor</span><span>• 4 High-Speed Elevators</span><span>• 2 Staircases</span><span>• Three-Side Open Views</span><span>• Podium &amp; Rooftop Amenities</span><span>• Possession Within 2 Years</span></span>`],["heart","Lifestyle Amenities",`<span class="svc-list"><span>• Solar PV Panels for Renewable Energy Generation</span><span>• Co-working Space</span><span>• Indoor &amp; Open Gym</span><span>• Yoga &amp; Meditation Zone</span><span>• Jogging Track</span><span>• Society Office</span><span>• Children's Play Area</span><span>• Grand Clubhouse</span><span>• Box Cricket</span></span>`]],
   amenities:[["pool","Swimming Pool"],["dumbbell","Gym"],["tree","Garden"],["smile","Kids Play Area"],["ball","Sports Area"],["yoga","Yoga"],["car","Parking"],["shield","24/7 Security"],["landmark","Clubhouse"],["battery","Power Backup"]],
   steps:[["Tell Us Your Requirement","Share your budget, location and needs."],["Get Property Options","Receive a shortlist matched to you."],["Schedule Site Visit","Visit the properties with my support."],["Close the Deal","Negotiate and complete paperwork."]],
   why:[["pin","Local Market Knowledge","Understanding of Pune's neighbourhoods."],["shieldcheck","Genuine Property Options","Properties checked before sharing."],["eye","Transparent Communication","Clear updates at every step."],["calendar","Site Visit Assistance","Visits arranged around your schedule."],["scale","Negotiation Support","Help reaching a fair deal."],["user","Personal Guidance","One point of contact throughout."]],
@@ -118,8 +118,8 @@ function renderStatic() {
   };
   fill("#categories", content.categories, c => `<article class="card reveal"><div class="ic">${icon(c[0])}</div><h3>${c[1]}</h3><p>${c[2]}</p><a href="#properties" data-purpose="${c[3]}">Explore</a></article>`);
   const svcCard = (s, i) => `<article class="svc reveal"><span class="svc-num" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span><div class="svc-ic">${icon(s[0])}</div><h3>${s[1]}</h3><p>${s[2]}</p><a href="#contact" class="svc-link">Enquire ${icon("arrow")}</a></article>`;
-  fill("#services-grid", content.services.slice(0, 2), (s, i) => svcCard(s, i));
-  fill("#project-grid", content.services.slice(2), (s, i) => svcCard(s, i + 2));
+  fill("#services-grid", content.services.slice(0, 4), (s, i) => svcCard(s, i));
+  fill("#project-grid", content.services.slice(4), (s, i) => svcCard(s, i));
   fill("#steps", content.steps, (s, i) => `<li class="step reveal"><b>${String(i + 1).padStart(2, "0")}</b><h3>${s[0]}</h3><p>${s[1]}</p></li>`);
   fill("#why-grid", content.why, w => `<article class="why-card reveal"><div class="why-ic">${icon(w[0])}</div><h3>${w[1]}</h3><p>${w[2]}</p></article>`);
   const nearby = $("#nearby"); if (nearby) fill("#nearby", content.nearby, n => `<div class="chip reveal"><span aria-hidden="true">${icon(n[0])}</span>${n[1]}</div>`);
@@ -300,26 +300,36 @@ function toggleFavorite(id, btn) {
    9. GALLERY / LIGHTBOX  (images in assets/images/gallery/)
    ========================================================= */
 let lIndex = 0, gView = [];
+const GALLERY_SLOTS = 12; /* 4 cards per row x 3 rows; empty slots show a placeholder until photos are added */
 const P = "assets/gallery/";
 const galleryData = {
-  /* Order: Refuge Area plan, 12th-14th floor plan, then unit plans */
+  /* Order of cards = order of this list. To add/replace a photo, put it in assets/gallery/ and edit a row. */
   plans: [
-    { src: P + "01-refuge-area-floor-plan.jpg", thumb: P + "01-refuge-area-floor-plan-thumb.jpg", title: "Refuge Area Floor Plan", sub: "Complete floor layout with refuge area", tag: "Featured" },
-    { src: P + "02-12th-14th-floor-plan.jpg", thumb: P + "02-12th-14th-floor-plan-thumb.jpg", title: "12th – 14th Floor Plan", sub: "Typical floor layout with all flat types", tag: "Featured" },
-    { src: P + "03-2bhk-type-1.jpg", thumb: P + "03-2bhk-type-1-thumb.jpg", title: "2 BHK · Type 1", sub: "Saleable area 1050 sq.ft", tag: "2 BHK" },
-    { src: P + "04-2bhk-type-2.jpg", thumb: P + "04-2bhk-type-2-thumb.jpg", title: "2 BHK · Type 2", sub: "Saleable area 1015 sq.ft", tag: "2 BHK" },
-    { src: P + "05-2bhk-type-3.jpg", thumb: P + "05-2bhk-type-3-thumb.jpg", title: "2 BHK · Type 3", sub: "Saleable area 945 sq.ft", tag: "2 BHK" },
-    { src: P + "06-3bhk-type-1.jpg", thumb: P + "06-3bhk-type-1-thumb.jpg", title: "3 BHK · Type 1", sub: "Saleable area 1449 sq.ft", tag: "3 BHK" }
+    { src: P + "01-2bhk-type-1.jpg", card: P + "01-2bhk-type-1-card.jpg", thumb: P + "01-2bhk-type-1-thumb.jpg", title: "2 BHK · Type 1", sub: "Saleable area 1050 sq.ft", tag: "2 BHK", kind: "plan" },
+    { src: P + "02-2bhk-type-2.jpg", card: P + "02-2bhk-type-2-card.jpg", thumb: P + "02-2bhk-type-2-thumb.jpg", title: "2 BHK · Type 2", sub: "Saleable area 1015 sq.ft", tag: "2 BHK", kind: "plan" },
+    { src: P + "03-2bhk-type-3.jpg", card: P + "03-2bhk-type-3-card.jpg", thumb: P + "03-2bhk-type-3-thumb.jpg", title: "2 BHK · Type 3", sub: "Saleable area 945 sq.ft", tag: "2 BHK", kind: "plan" },
+    { src: P + "04-3bhk-type-1.jpg", card: P + "04-3bhk-type-1-card.jpg", thumb: P + "04-3bhk-type-1-thumb.jpg", title: "3 BHK · Type 1", sub: "Saleable area 1449 sq.ft", tag: "3 BHK", kind: "plan" },
+    { src: P + "05-building-side-view.jpg", card: P + "05-building-side-view-card.jpg", thumb: P + "05-building-side-view-thumb.jpg", title: "Building Side View", sub: "Brick and white façade with entrance gate", tag: "Elevation", kind: "photo" },
+    { src: P + "06-fountain.jpg", card: P + "06-fountain-card.jpg", thumb: P + "06-fountain-thumb.jpg", title: "Fountain", sub: "Water feature with landscaped lawn", tag: "Amenity", kind: "photo" },
+    { src: P + "07-play-area.jpg", card: P + "07-play-area-card.jpg", thumb: P + "07-play-area-thumb.jpg", title: "Play Area", sub: "Colourful play zone for children", tag: "Amenity", kind: "photo" },
+    { src: P + "08-podium-garden.jpg", card: P + "08-podium-garden-card.jpg", thumb: P + "08-podium-garden-thumb.jpg", title: "Podium Garden", sub: "Landscaped garden with canopy structures", tag: "Amenity", kind: "photo" },
+    { src: P + "09-seating-area.jpg", card: P + "09-seating-area-card.jpg", thumb: P + "09-seating-area-thumb.jpg", title: "Seating Area", sub: "Relaxing seating surrounded by greenery", tag: "Amenity", kind: "photo" },
+    { src: P + "10-temple.jpg", card: P + "10-temple-card.jpg", thumb: P + "10-temple-thumb.jpg", title: "Temple", sub: "Peaceful temple corner on the terrace", tag: "Amenity", kind: "photo" },
+    { src: P + "11-terrace-garden.jpg", card: P + "11-terrace-garden-card.jpg", thumb: P + "11-terrace-garden-thumb.jpg", title: "Terrace Garden", sub: "Aerial view of the terrace amenities", tag: "Aerial", kind: "photo" },
+    { src: P + "12-top-view.jpg", card: P + "12-top-view-card.jpg", thumb: P + "12-top-view-thumb.jpg", title: "Top View", sub: "Project and its surroundings from above", tag: "Aerial", kind: "photo" }
   ]
 };
 const zoomIcon = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>';
 function renderGallery() {
   gView = galleryData.plans;
   const grid = $("#galleryGrid");
-  grid.innerHTML = gView.map((g, i) => `<button type="button" class="g-item" data-i="${i}" aria-label="Open ${g.title}">
-      <span class="g-media">${imgTag(g.src, g.title + " floor plan")}<span class="g-tag ${g.tag === "Featured" ? "gold" : ""}">${g.tag}</span><span class="g-zoom" aria-hidden="true">${zoomIcon}</span></span>
+  grid.innerHTML = gView.map((g, i) => `<button type="button" class="g-item is-${g.kind}" data-i="${i}" aria-label="Open ${g.title}">
+      <span class="g-media">${imgTag(g.card || g.src, g.title)}<span class="g-tag ${g.kind === "photo" ? "gold" : ""}">${g.tag}</span><span class="g-zoom" aria-hidden="true">${zoomIcon}</span></span>
       <span class="g-body"><b>${g.title}</b><em>${g.sub}</em><i aria-hidden="true">View ›</i></span>
-    </button>`).join("");
+    </button>`).join("") + Array.from({ length: Math.max(0, GALLERY_SLOTS - gView.length) }, () => `<div class="g-item g-empty" aria-hidden="true">
+      <span class="g-media"><span class="g-plus">+</span></span>
+      <span class="g-body"><b>Photo Coming Soon</b><em>Floor plan will be added here</em></span>
+    </div>`).join("");
   $("#lThumbs").innerHTML = gView.map((g, i) => `<button type="button" data-t="${i}" aria-label="Show image ${i + 1}"><img src="${g.thumb}" alt="" loading="lazy"></button>`).join("");
 }
 function showLightbox(i) {
